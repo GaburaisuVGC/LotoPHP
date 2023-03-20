@@ -37,7 +37,7 @@ $winning_numbers_str = implode('-', $winning_numbers);
 
 // Tri des tableaux de numéro pour faciliter la comparaison
 sort($winning_numbers);
-foreach ($data as &$player) {
+foreach ($data as $player) {
     sort($player);
 }
 
@@ -89,10 +89,10 @@ $gagnants = array();
 foreach ($results as $rang => $result) {
     foreach ($result as $gagnant) {
         $gagnant = array(
-            'nom' => $gagnant[9],
-            'grille' => $gagnant[8],
-            'numeros' => array_slice($gagnant, 0, 7),
-            'numero_chance' => $gagnant[7]
+            'nom' => $gagnant[0],
+            'grille' => $gagnant[1],
+            'numeros' => array_slice($gagnant, 2, 7),
+            'numero_chance' => $gagnant[9]
         );
         $gagnants[$rang] = $gagnant;
     }
