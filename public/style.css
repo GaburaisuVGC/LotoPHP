@@ -1,0 +1,71 @@
+/* style.css */
+
+/* Style de base pour le corps de la page */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style du header */
+  header {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Style du formulaire d'upload */
+  form.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  form.upload-form label {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  form.upload-form input[type=file] {
+    margin-bottom: 20px;
+  }
+  
+  form.upload-form input[type=submit] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  footer {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  div {
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  code {
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+    font-family: monospace;
+    padding: 20px;
+    overflow: auto;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
