@@ -35,12 +35,6 @@ while (count($winning_numbers) < 7) {
 
 $winning_numbers_str = implode('-', $winning_numbers);
 
-// Tri des tableaux de numéro pour faciliter la comparaison
-sort($winning_numbers);
-foreach ($data as $player) {
-    sort($player);
-}
-
 // Initialisation du tableau de résultats
 $results = array(
     "rang_1" => array(),
@@ -53,33 +47,43 @@ $results = array(
 
 // Parcours des joueurs pour trouver les gagnants
 foreach ($data as $player) {
-    // num_matches contient le nombre de numéros gagnants, en faisant l'intersection des tableaux
-    // has_chance contient le booléen indiquant si le numéro chance est gagnant
-    $num_matches = count(array_intersect($player, $winning_numbers));
-    $has_chance = in_array($winning_chance, $player);
-    $player_result = array_merge($player, array($winning_chance));
+    // num_matches contient le nombre de numéros gagnants, en faisant la comparaison des tableaux, il ne doit pas contenir le numéro chance du joueur
+    // has_chance contient le booléen indiquant si le numéro chance est gagnant, il ne doit pas comparer les 7 numéros du joueur
+    $num_matches = 0;
+    $has_chance = false;
+
+    // Les numéros du joueur sont stockés dans un tableau à partir de la 3ème colonne
+    for ($i = 2; $i < 9; $i++) {
+        if (in_array($player[$i], $winning_numbers)) {
+            $num_matches++;
+        }
+    }
+
+    if ($player[9] == $winning_chance) {
+        $has_chance = true;
+    }
 
     // On ajoute le joueur au tableau des résultats correspondant à son rang
     if ($num_matches >= 5 && $has_chance) {
-        array_push($results["rang_1"], $player_result);
+        array_push($results["rang_1"], $player);
     } elseif ($num_matches >= 5 && !$has_chance) {
-        array_push($results["rang_2"], $player_result);
+        array_push($results["rang_2"], $player);
     } elseif ($num_matches == 4 && $has_chance) {
-        array_push($results["rang_3"], $player_result);
+        array_push($results["rang_3"], $player);
     } elseif ($num_matches == 4 && !$has_chance) {
-        array_push($results["rang_3"], $player_result);
+        array_push($results["rang_3"], $player);
     } elseif ($num_matches == 3 && $has_chance) {
-        array_push($results["rang_4"], $player_result);
+        array_push($results["rang_4"], $player);
     } elseif ($num_matches == 3 && !$has_chance) {
-        array_push($results["rang_4"], $player_result);
+        array_push($results["rang_4"], $player);
     } elseif ($num_matches == 2 && $has_chance) {
-        array_push($results["rang_5"], $player_result);
+        array_push($results["rang_5"], $player);
     } elseif ($num_matches == 2 && !$has_chance) {
-        array_push($results["rang_5"], $player_result);
+        array_push($results["rang_5"], $player);
     } elseif ($num_matches == 1 && $has_chance) {
-        array_push($results["rang_6"], $player_result);
+        array_push($results["rang_6"], $player);
     } elseif ($num_matches == 0 && $has_chance) {
-        array_push($results["rang_6"], $player_result);
+        array_push($results["rang_6"], $player);
     }
 }
 
